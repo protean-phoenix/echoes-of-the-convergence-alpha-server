@@ -5,21 +5,49 @@ import java.util.Collections;
 
 public class MatchmakingHost {
 	public static ArrayList<Lobby> lobbies;
+	public static ArrayList<Lobby> primed;
 	
-	public static void createLobby(String ip, int port) {
+	public static String createLobby(String ip, int port, SocketThread thread) {
 		if(lobbies == null) lobbies = new ArrayList<Lobby>();
-		lobbies.add(new Lobby(ip, port));
+		Lobby new_lobby = new Lobby(ip, port, thread);
+		lobbies.add(new_lobby);
+		return new_lobby.getId();
 	}
 	
 	public static void removeLobby(String id) {
-		for(Lobby l: lobbies) {
-			if(l.getId().equals(id)) {
-				lobbies.remove(l);
+		for(int i = 0; i < lobbies.size(); i++){
+			if(lobbies.get(i).getId().equals(id)) {
+				lobbies.remove(i);
+				break;
 			}
 		}
 	}
 	
 	public static ArrayList<Lobby> getLobbies(){
 		return lobbies;
+	}
+	
+	public static Lobby getLobbyByPlayer1Thread(SocketThread st) {
+		for(Lobby l: lobbies) {
+			if(l.getPlayer1Thread() == st) {
+				return l;
+			}
+		}
+		return null;
+	}
+	
+	public static Lobby getLobbyByPlayer2Thread(SocketThread st) {
+		for(Lobby l: lobbies) {
+			if(l.getPlayer2Thread() == st) {
+				return l;
+			}
+		}
+		return null;
+	}
+	
+	public static void moveLobbyToPrimed(Lobby l) {
+		lobbies.remove(l);
+		if(primed == null) primed = new ArrayList<Lobby>();
+		primed.add(l);
 	}
 }
