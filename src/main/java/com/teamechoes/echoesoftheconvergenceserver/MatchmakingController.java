@@ -37,6 +37,7 @@ public class MatchmakingController {
 		JSONObject jo = new JSONObject();
 		jo.put("port", ss.getLocalPort());
 		jo.put("id", id);
+		jo.put("player_id", 0);
 
 		return new ResponseEntity<String>(jo.toString(), HttpStatus.OK);
 	}
@@ -84,6 +85,7 @@ public class MatchmakingController {
 		JSONObject jo = new JSONObject();
 		jo.put("port", ss.getLocalPort());
 		jo.put("id", target.getId());
+		jo.put("player_id", 1);
 
 		return new ResponseEntity<String>(jo.toString(), HttpStatus.OK);
 	}

@@ -24,6 +24,7 @@ public class MatchmakingHost {
 	}
 	
 	public static ArrayList<Lobby> getLobbies(){
+		if(lobbies == null) lobbies = new ArrayList<Lobby>();
 		return lobbies;
 	}
 	

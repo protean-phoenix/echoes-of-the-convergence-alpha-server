@@ -39,9 +39,13 @@ public class SocketThread extends Thread {
 				rm.broadcast("Match ready!");
 				rm.player1Thread.closeConnection();
 				rm.player2Thread.closeConnection();
-				String[] cmdarray = new String[1];
-				cmdarray[0] = "C:/Users/Ace/Documents/EoTC/lobby/echoes-of-the-convergence-alpha-lobby.exe";
+				
 				/*
+				String[] cmdarray = new String[1]; //the size of this string array must EXACTLY EQUAL the number of commands you're feeding to the runtime
+				//cmdarray[0] = "C:/Users/Ace/Documents/EoTC/lobby/echoes-of-the-convergence-alpha-lobby.exe"; //testing
+				cmdarray[0] = "lobby-dedicated/echoes-of-the-convergence-lobby.x86_64"; //production		
+				//cmdarray[1] = "-batchmode";
+				
 				try {
 					Runtime.getRuntime().exec(cmdarray);
 				} catch (IOException e) {
