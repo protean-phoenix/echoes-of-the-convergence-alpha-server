@@ -14,8 +14,8 @@ public class DynamoDBContainer {
 	static AmazonDynamoDB client;
 	static DynamoDB dynamo;
 	static DynamoDBMapper mapper;
-    private static String awsAccessKey = "AKIAROAGYUCSIB2YJKH6";
-    private static String awsSecretKey = "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";
+    private static String awsAccessKey = "XXXXX";
+    private static String awsSecretKey = "XXXXX";
 
 
 	private static void initDynamoDB() {
